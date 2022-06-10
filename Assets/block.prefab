@@ -11,9 +11,10 @@ GameObject:
   - component: {fileID: 148030177825466115}
   - component: {fileID: 3864707766574393510}
   - component: {fileID: 1316955948804004972}
+  - component: {fileID: 5882238410966710776}
   m_Layer: 0
   m_Name: block
-  m_TagString: Untagged
+  m_TagString: CastleBlock
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -86,3 +87,16 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &5882238410966710776
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 668283189103656377}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3, y: 1.9999999, z: 3}
+  m_Center: {x: -1, y: 1, z: -1}

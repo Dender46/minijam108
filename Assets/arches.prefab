@@ -11,9 +11,10 @@ GameObject:
   - component: {fileID: 368334620455024504}
   - component: {fileID: 3653349448206792925}
   - component: {fileID: 1537903124833684503}
+  - component: {fileID: 7668345307225428305}
   m_Layer: 0
   m_Name: arches
-  m_TagString: Untagged
+  m_TagString: CastleBlock
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -84,3 +85,16 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &7668345307225428305
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1033372491558645186}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3, y: 1.9999999, z: 2.9999998}
+  m_Center: {x: -1, y: 1, z: -1}

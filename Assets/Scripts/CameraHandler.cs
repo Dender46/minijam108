@@ -5,7 +5,6 @@ using UnityEngine;
 public class CameraHandler : MonoBehaviour
 {
     public GameObject m_CastlesParent;
-    public List<GameObject> m_Blocks;
 
     void Start()
     {
@@ -24,17 +23,19 @@ public class CameraHandler : MonoBehaviour
 
             if (Physics.Raycast(ray, out hit))
             {
-                Debug.Log(hit.point);
-                SpawnObject(hit.point);
+                switch(hit.collider.tag)
+                {
+                    case "CastleBlock":
+                        Vector3 topOfBlock = hit.collider.transform.position;
+                        topOfBlock.y += 2;
+                        CastlesManager.AddNewBlock(hit.collider.gameObject);
+                        break;
+                    case "Ground":
+                        CastlesManager.CreateNewCastle(hit.point);
+                        break;
+                }
             }
         }
-    }
-
-    void SpawnObject(Vector3 pos)
-    {
-        var randomBlock = m_Blocks[Random.Range(0, m_Blocks.Count-1)];
-        var spawnedBlock = Instantiate(randomBlock, pos, randomBlock.transform.rotation);
-        spawnedBlock.transform.SetParent(m_CastlesParent.transform);
     }
 
 }
