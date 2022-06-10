@@ -9,7 +9,10 @@ public class CameraHandler : MonoBehaviour
 
     void Start()
     {
-        
+        for (int i = 0; i < m_CastlesParent.transform.childCount; i++)
+        {
+            Destroy(m_CastlesParent.transform.GetChild(i).gameObject);
+        }
     }
 
     void Update()
