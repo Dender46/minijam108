@@ -53,7 +53,7 @@ public class CastlesManager : MonoBehaviour
         spawnedBlock.transform.SetParent(castleObj.parent);
         castleObj.blocks.Add(spawnedBlock);
 
-        castleObj.maxHeight = (int)Random.Range(instance.m_MinMaxHeight.x, instance.m_MinMaxHeight.y + 1);
+        castleObj.maxHeight = Random.Range((int)instance.m_MinMaxHeight.x, (int)instance.m_MinMaxHeight.y + 1);
     }
 
     public static void AddNewBlock(GameObject castleBlock)
@@ -74,6 +74,11 @@ public class CastlesManager : MonoBehaviour
         
         var spawnedBlock = Instantiate(randomBlock, newPos, randomBlock.transform.rotation);
         spawnedBlock.transform.SetParent(castleObj.parent);
+        spawnedBlock.transform.eulerAngles = new Vector3(
+            spawnedBlock.transform.eulerAngles.x,
+            spawnedBlock.transform.eulerAngles.y + 90.0f * Random.Range(0, 3),
+            spawnedBlock.transform.eulerAngles.z
+        );
         castleObj.blocks.Add(spawnedBlock);
     }
 
