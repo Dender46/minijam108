@@ -701,7 +701,9 @@ MonoBehaviour:
   m_Blocks:
   - {fileID: 1033372491558645186, guid: 5d94b5122d02c994a83b39aeb931d5ba, type: 3}
   - {fileID: 668283189103656377, guid: 044b5a7e41086b94aa2ce12f5e5288da, type: 3}
+  m_Roofs:
   - {fileID: 4456042026488400894, guid: b0718bd660d66f5419519ae30d50feaf, type: 3}
+  m_MinMaxSize: {x: 2, y: 5}
 --- !u!4 &1753147009
 Transform:
   m_ObjectHideFlags: 0
