@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class CameraHandler : MonoBehaviour
 {
-    public GameObject m_Object;
+    public GameObject m_CastlesParent;
+    public List<GameObject> m_Blocks;
+
     void Start()
     {
         
@@ -27,7 +29,9 @@ public class CameraHandler : MonoBehaviour
 
     void SpawnObject(Vector3 pos)
     {
-        Instantiate(m_Object, pos, Quaternion.identity);
+        var randomBlock = m_Blocks[Random.Range(0, m_Blocks.Count-1)];
+        var spawnedBlock = Instantiate(randomBlock, pos, randomBlock.transform.rotation);
+        spawnedBlock.transform.SetParent(m_CastlesParent.transform);
     }
 
 }
