@@ -39,32 +39,26 @@ public class PuzzleGenerator : MonoBehaviour
 
         for (int i = 0; i < m_MaxLength; i++)
         {
-            
+            CreateNewSegment();
         }
+
+        CreateFinishSegment();
     }
 
     void Update()
     {
-        if (Input.GetMouseButtonDown(0) && m_Length < m_MaxLength)
-        {
-            CreateNewSegment();
-        }
-
-        transform.Translate(0.0f, -1.0f * Time.deltaTime, 0.0f);
+        //transform.Translate(0.0f, -1.0f * Time.deltaTime, 0.0f);
     }
 
     void CreateNewSegment()
     {
-        // TODO: skip same path as last one
+        // TODO: skip same path as last one; right now brute force it
         Path o;
-        int i = 50, j = 0;
         do
         {
             o = m_DictPaths[m_LastPath.nextPos][UnityEngine.Random.Range(0, m_DictPaths[m_LastPath.nextPos].Count)];
         }
-        while (o.path == m_LastPath.path || j++ >= i);
-        if (j >= i)
-            Debug.LogError("Exceded amount of tries");
+        while (o.path == m_LastPath.path);
 
         Vector3 newPos = new Vector3(
             m_LastPathGameObject.transform.position.x + m_LastPath.nextPos.x * m_NewPosOffset,
@@ -78,5 +72,15 @@ public class PuzzleGenerator : MonoBehaviour
         m_LastPathGameObject = newNewPath;
     }
 
+    void CreateFinishSegment()
+    {
+        Vector3 newPos = new Vector3(
+            m_LastPathGameObject.transform.position.x + m_LastPath.nextPos.x * m_NewPosOffset,
+            m_LastPathGameObject.transform.position.y + m_LastPath.nextPos.y * m_NewPosOffset,
+            m_LastPathGameObject.transform.position.z
+        );
+        GameObject newNewPath = Instantiate(m_End, transform);
+        newNewPath.transform.position = newPos;
+    }
 
 }

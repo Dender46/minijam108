@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7193607137462832664}
   - component: {fileID: 387731169449088214}
+  - component: {fileID: 7159483822449113163}
   m_Layer: 0
   m_Name: RTS_medieval2_46
   m_TagString: Untagged
@@ -84,3 +85,45 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!60 &7159483822449113163
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9047547847123195111}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1.9859265, y: 1.9859265}
+    newSize: {x: 4.0009766, y: 4}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0.43002346, y: 0.1954652}
+      - {x: 0.43002346, y: 0.8365911}
+      - {x: 0.33620018, y: 0.94605166}
+      - {x: 0.30492574, y: 0.9929633}
+      - {x: -0.32056296, y: 0.9929633}
+      - {x: -0.24486908, y: 0.6854642}
+      - {x: -0.28928852, y: 0.44566068}
+      - {x: -0.7114934, y: 0.4612979}
+      - {x: -0.9929633, y: 0.3518374}
+      - {x: -0.9929633, y: -0.28928852}
+      - {x: -0.9616889, y: -0.28928852}
+      - {x: -0.6645817, y: -0.21110243}
+      - {x: -0.4220634, y: -0.2284429}
+      - {x: -0.21110243, y: -0.28928852}
+      - {x: -0.18224782, y: -0.2894029}
+      - {x: 0.19760588, y: -0.18196036}
+      - {x: 0.28928852, y: -0.023455825}
