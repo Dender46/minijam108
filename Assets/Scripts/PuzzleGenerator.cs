@@ -14,12 +14,14 @@ public class PuzzleGenerator : MonoBehaviour
     }
 
     public List<Path> m_Paths;
-    public GameObject m_End;
+    public List<Path> m_EndPaths;
+
     public int m_MaxLength = 5;
     public int m_Length = 0;
     public float m_NewPosOffset = 3.999f;
 
     private Dictionary<Vector2, List<Path>> m_DictPaths = new Dictionary<Vector2, List<Path>>();
+    private Dictionary<Vector2, List<Path>> m_DictEndPaths = new Dictionary<Vector2, List<Path>>();
     private GameObject m_LastPathGameObject;
     private Path m_LastPath;
 
@@ -32,6 +34,15 @@ public class PuzzleGenerator : MonoBehaviour
                 m_DictPaths[key] = new List<Path>();
 
             m_DictPaths[key].Add(path);
+        }
+
+        foreach (Path path in m_EndPaths)
+        {
+            var key = path.beginPos;
+            if (!m_DictEndPaths.ContainsKey(key))
+                m_DictEndPaths[key] = new List<Path>();
+
+            m_DictEndPaths[key].Add(path);
         }
 
         m_LastPath = m_Paths[0];
@@ -74,12 +85,14 @@ public class PuzzleGenerator : MonoBehaviour
 
     void CreateFinishSegment()
     {
+        Path o = m_DictEndPaths[m_LastPath.nextPos][UnityEngine.Random.Range(0, m_DictEndPaths[m_LastPath.nextPos].Count)];
+        
         Vector3 newPos = new Vector3(
             m_LastPathGameObject.transform.position.x + m_LastPath.nextPos.x * m_NewPosOffset,
             m_LastPathGameObject.transform.position.y + m_LastPath.nextPos.y * m_NewPosOffset,
             m_LastPathGameObject.transform.position.z
         );
-        GameObject newNewPath = Instantiate(m_End, transform);
+        GameObject newNewPath = Instantiate(o.path, transform);
         newNewPath.transform.position = newPos;
     }
 
