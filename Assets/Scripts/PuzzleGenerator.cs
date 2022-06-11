@@ -25,7 +25,15 @@ public class PuzzleGenerator : MonoBehaviour
     private GameObject m_LastPathGameObject;
     private Path m_LastPath;
 
+    public static PuzzleGenerator instance;
+
     void Start()
+    {
+        Initialize();
+        CreatePuzzle();
+    }
+
+    void Initialize()
     {
         foreach (Path path in m_Paths)
         {
@@ -44,7 +52,15 @@ public class PuzzleGenerator : MonoBehaviour
 
             m_DictEndPaths[key].Add(path);
         }
+    }
 
+    void Update()
+    {
+        //transform.Translate(0.0f, -1.0f * Time.deltaTime, 0.0f);
+    }
+
+    void CreatePuzzle()
+    {
         m_LastPath = m_Paths[0];
         m_LastPathGameObject = Instantiate(m_LastPath.path, transform);
 
@@ -56,10 +72,6 @@ public class PuzzleGenerator : MonoBehaviour
         CreateFinishSegment();
     }
 
-    void Update()
-    {
-        //transform.Translate(0.0f, -1.0f * Time.deltaTime, 0.0f);
-    }
 
     void CreateNewSegment()
     {

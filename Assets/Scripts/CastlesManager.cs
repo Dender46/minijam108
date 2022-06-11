@@ -49,8 +49,7 @@ public class CastlesManager : MonoBehaviour
         castleObj.parent = newCastle.transform;
 
         var randomBlock = instance.m_Blocks[Random.Range(0, instance.m_Blocks.Count)];
-        var spawnedBlock = Instantiate(randomBlock, newCastle.transform.position, randomBlock.transform.rotation);
-        spawnedBlock.transform.SetParent(castleObj.parent);
+        var spawnedBlock = Instantiate(randomBlock, newCastle.transform.position, randomBlock.transform.rotation, castleObj.parent);
         castleObj.blocks.Add(spawnedBlock);
 
         castleObj.maxHeight = Random.Range((int)instance.m_MinMaxHeight.x, (int)instance.m_MinMaxHeight.y + 1);
@@ -72,8 +71,7 @@ public class CastlesManager : MonoBehaviour
         else
             randomBlock = instance.m_Roofs[Random.Range(0, instance.m_Roofs.Count)];
         
-        var spawnedBlock = Instantiate(randomBlock, newPos, randomBlock.transform.rotation);
-        spawnedBlock.transform.SetParent(castleObj.parent);
+        var spawnedBlock = Instantiate(randomBlock, newPos, randomBlock.transform.rotation, castleObj.parent);
         spawnedBlock.transform.eulerAngles = new Vector3(
             spawnedBlock.transform.eulerAngles.x,
             spawnedBlock.transform.eulerAngles.y + 90.0f * Random.Range(0, 3),
