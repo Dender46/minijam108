@@ -34,7 +34,7 @@ public class InputHandler : MonoBehaviour
         m_IsPressing = true;
 
         CreateCastle(hit);
-        CreatePuzzle(hit);
+        CreatePuzzle(ray.origin, hit);
     }
 
     void OnMouseReleased()
@@ -59,10 +59,13 @@ public class InputHandler : MonoBehaviour
         }
     }
 
-    void CreatePuzzle(RaycastHit hit)
+    void CreatePuzzle(Vector3 hitOrigin, RaycastHit hit)
     {
         m_PuzzleObject = Instantiate(m_PuzzlePrefab);
         m_PuzzleObject.transform.position = hit.point;
+
+        Vector3 dirToCameraPlane = hitOrigin - hit.point;
+        m_PuzzleObject.transform.Translate(dirToCameraPlane);
     }
 
 

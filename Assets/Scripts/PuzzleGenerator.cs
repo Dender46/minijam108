@@ -70,6 +70,9 @@ public class PuzzleGenerator : MonoBehaviour
         }
 
         CreateFinishSegment();
+
+        // Rotate towards camera
+        transform.eulerAngles = Camera.main.transform.eulerAngles;
     }
 
 
@@ -88,8 +91,7 @@ public class PuzzleGenerator : MonoBehaviour
             m_LastPathGameObject.transform.position.y + m_LastPath.nextPos.y * m_NewPosOffset,
             m_LastPathGameObject.transform.position.z
         );
-        GameObject newNewPath = Instantiate(o.path, transform);
-        newNewPath.transform.position = newPos;
+        GameObject newNewPath = Instantiate(o.path, newPos, transform.rotation, transform);
             
         m_LastPath = o;
         m_LastPathGameObject = newNewPath;
@@ -104,8 +106,7 @@ public class PuzzleGenerator : MonoBehaviour
             m_LastPathGameObject.transform.position.y + m_LastPath.nextPos.y * m_NewPosOffset,
             m_LastPathGameObject.transform.position.z
         );
-        GameObject newNewPath = Instantiate(o.path, transform);
-        newNewPath.transform.position = newPos;
+        GameObject newNewPath = Instantiate(o.path, newPos, transform.rotation, transform);
     }
 
 }
