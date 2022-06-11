@@ -45,7 +45,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af58901060fa91e438ce3e33d9343e61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_PlayerPrefab: {fileID: 5804599707163270569, guid: 6b5711cdef4b31842aeff41e50c88291, type: 3}
   m_Paths:
   - beginPos: {x: 0, y: -1}
     nextPos: {x: 0, y: 1}
@@ -93,3 +92,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b7b298ecd574f74d942ed2af34df0a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_PlayerPrefab: {fileID: 5804599707163270569, guid: 6b5711cdef4b31842aeff41e50c88291, type: 3}

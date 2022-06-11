@@ -70,9 +70,6 @@ public class PuzzleGenerator : MonoBehaviour
         }
 
         CreateFinishSegment();
-
-        // Rotate towards camera
-        transform.eulerAngles = Camera.main.transform.eulerAngles;
     }
 
 

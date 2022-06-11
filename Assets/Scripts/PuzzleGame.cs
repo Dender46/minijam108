@@ -9,7 +9,7 @@ public class PuzzleGame : MonoBehaviour
     void Start()
     {
         // Add player controller prefab
-        //Instantiate(m_PlayerPrefab, transform);
+        Instantiate(m_PlayerPrefab, transform);
     }
 
     void Update()

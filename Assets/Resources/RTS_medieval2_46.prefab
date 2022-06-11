@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 7193607137462832664}
   - component: {fileID: 387731169449088214}
   - component: {fileID: 7159483822449113163}
+  - component: {fileID: 6762610150042878144}
+  - component: {fileID: 880131163585743036}
   m_Layer: 0
   m_Name: RTS_medieval2_46
   m_TagString: Untagged
@@ -95,7 +97,7 @@ PolygonCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -110,20 +112,67 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 0.43002346, y: 0.1954652}
-      - {x: 0.43002346, y: 0.8365911}
-      - {x: 0.33620018, y: 0.94605166}
-      - {x: 0.30492574, y: 0.9929633}
-      - {x: -0.32056296, y: 0.9929633}
-      - {x: -0.24486908, y: 0.6854642}
+    - - {x: -0.3342685, y: 0.92697245}
+      - {x: -0.20662688, y: 0.56260556}
       - {x: -0.28928852, y: 0.44566068}
       - {x: -0.7114934, y: 0.4612979}
       - {x: -0.9929633, y: 0.3518374}
-      - {x: -0.9929633, y: -0.28928852}
-      - {x: -0.9616889, y: -0.28928852}
-      - {x: -0.6645817, y: -0.21110243}
-      - {x: -0.4220634, y: -0.2284429}
-      - {x: -0.21110243, y: -0.28928852}
-      - {x: -0.18224782, y: -0.2894029}
-      - {x: 0.19760588, y: -0.18196036}
-      - {x: 0.28928852, y: -0.023455825}
+      - {x: -0.9655158, y: 0.9290612}
+      - {x: -0.3483871, y: 1.0073338}
+--- !u!60 &6762610150042878144
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9047547847123195111}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 1.5, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1.9859265, y: 1.9859265}
+    newSize: {x: 4.0009766, y: 4}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: -0.5464045, y: 1.0120938}
+      - {x: -1.1606703, y: 0.97489935}
+      - {x: -1.0517802, y: 0.51544166}
+      - {x: -1.1100688, y: 0.16895317}
+      - {x: -1.3283917, y: -0.18640928}
+      - {x: -1.5565548, y: -0.27100465}
+      - {x: -1.8993999, y: -0.20024452}
+      - {x: -2.1952212, y: -0.20351037}
+      - {x: -2.5043247, y: -0.30205524}
+      - {x: -2.5312824, y: -0.6706823}
+      - {x: -1.0874547, y: -0.71506983}
+--- !u!50 &880131163585743036
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9047547847123195111}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0

@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2106556845622157315}
   - component: {fileID: 5305518942846331447}
   - component: {fileID: 1218907161659972839}
+  - component: {fileID: 5347884440221988811}
   m_Layer: 0
   m_Name: RTS_medieval2_29
   m_TagString: Untagged
@@ -96,7 +97,7 @@ PolygonCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -111,16 +112,24 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 0.31274435, y: 0.48475373}
+    - - {x: 0.31314123, y: 0.4686577}
       - {x: 0.1876466, y: 0.51602817}
+      - {x: -0.09007132, y: 0.54170847}
       - {x: -0.4691165, y: 0.51602817}
       - {x: -0.7818608, y: 0.43784207}
       - {x: -1.0007819, y: 0.31274435}
-      - {x: -1.0007819, y: -0.29710713}
-      - {x: -0.95387024, y: -0.29710713}
-      - {x: -0.67240036, y: -0.23455825}
-      - {x: -0.1876466, y: -0.5316654}
-      - {x: 0.14073496, y: -0.5316654}
+      - {x: -0.98155296, y: 0.75997424}
+      - {x: -0.5644389, y: 0.8645731}
+      - {x: 0.027236938, y: 0.85333717}
+      - {x: 0.7286258, y: 0.74022347}
+      - {x: 0.96511316, y: -0.44497615}
+      - {x: 0.42283353, y: -0.8893583}
+      - {x: -0.49823028, y: -0.83736557}
+      - {x: -1.0099363, y: -0.7294262}
+      - {x: -0.99760187, y: -0.31584123}
+      - {x: -0.682294, y: -0.21169293}
+      - {x: -0.43798643, y: -0.3365414}
+      - {x: -0.0893625, y: -0.5649467}
       - {x: 0.32838157, y: -0.4691165}
       - {x: 0.5316654, y: -0.20328382}
       - {x: 0.5316654, y: 0.23455825}
@@ -134,9 +143,30 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.4
+--- !u!50 &5347884440221988811
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3016982473400541310}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
