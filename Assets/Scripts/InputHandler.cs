@@ -65,7 +65,7 @@ public class InputHandler : MonoBehaviour
         m_PuzzleObject.transform.position = hit.point;
 
         Vector3 dirToCameraPlane = hitOrigin - hit.point;
-        m_PuzzleObject.transform.Translate(dirToCameraPlane * 0.8f);
+        m_PuzzleObject.transform.Translate(dirToCameraPlane * 0.5f);
     }
 
 
