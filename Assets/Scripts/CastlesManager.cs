@@ -99,6 +99,8 @@ public class CastlesManager : MonoBehaviour
 
     public void OnPuzzleWin()
     {
+        var ps = m_CurrentBuildingCastle.blocks[m_CurrentBuildingCastle.blocks.Count - 1].GetComponent<ParticleSystem>().emission;
+        ps.enabled = false;
         UpdateBuildingProgress(1.0f);
         m_CurrentBuildingCastle = null;
     }
