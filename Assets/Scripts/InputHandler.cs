@@ -48,7 +48,7 @@ public class InputHandler : MonoBehaviour
 
     void OnMouseReleased()
     {
-        if (CastlesManager.instance.IsCurrentlyBuilding())
+        if (CastlesManager.instance.IsPuzzleLost())
             CastlesManager.instance.OnPuzzleLose();
         Destroy(m_PuzzleObject);
     }

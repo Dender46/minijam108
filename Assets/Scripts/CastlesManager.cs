@@ -7,14 +7,18 @@ public class CastlesManager : MonoBehaviour
     public static CastlesManager instance;
 
     public Transform m_CastlesParent;
+    public GameObject m_WrapperCastle;
     public List<GameObject> m_Blocks = new List<GameObject>();
     public List<GameObject> m_Roofs = new List<GameObject>();
     public Vector2 m_MinMaxHeight = new Vector2(2, 3);
+    public float m_CollapsingSpeed = 1.0f;
 
     Dictionary<Transform, Castle> m_Castles = new Dictionary<Transform, Castle>();
-    GameObject m_EmptyCastle;
 
     Castle m_CurrentBuildingCastle;
+    Castle m_LastSuccessfulCastle;
+
+    List<GameObject> m_CurrentlyCollapsingCastles = new List<GameObject>();
 
     class Castle
     {
@@ -28,7 +32,6 @@ public class CastlesManager : MonoBehaviour
         if (instance == null)
         {
             instance = this;
-            m_EmptyCastle = new GameObject("Castle");
             for (int i = 0; i < m_CastlesParent.childCount; i++)
             {
                 Destroy(m_CastlesParent.transform.GetChild(i).gameObject);
@@ -41,11 +44,30 @@ public class CastlesManager : MonoBehaviour
         }
     }
 
+    void Update()
+    {
+        for (int i = 0; i < m_CurrentlyCollapsingCastles.Count; i++)
+        {
+            var castle = m_CurrentlyCollapsingCastles[i];
+            var move = new Vector3(0.0f, m_CollapsingSpeed * Time.deltaTime, 0.0f);
+            
+            castle.transform.Translate(-move);
+            var sh = castle.GetComponent<ParticleSystem>().shape;
+            sh.position += move;
+
+            if (castle.transform.position.y < -30.0f)
+            {
+                m_CurrentlyCollapsingCastles.RemoveAt(i--);
+                Destroy(castle);
+            }
+        }
+    }
+
     public void CreateNewCastle(Vector3 pos)
     {
         Castle castleObj = new Castle();
 
-        GameObject newCastle = Instantiate(m_EmptyCastle, pos, Quaternion.identity, m_CastlesParent);
+        GameObject newCastle = Instantiate(m_WrapperCastle, pos, Quaternion.identity, m_CastlesParent);
         newCastle.transform.localRotation = Quaternion.identity;
         castleObj.parent = newCastle.transform;
 
@@ -99,21 +121,30 @@ public class CastlesManager : MonoBehaviour
 
     public void OnPuzzleWin()
     {
-        var ps = m_CurrentBuildingCastle.blocks[m_CurrentBuildingCastle.blocks.Count - 1].GetComponent<ParticleSystem>().emission;
-        ps.enabled = false;
+        m_CurrentBuildingCastle.blocks[m_CurrentBuildingCastle.blocks.Count - 1].GetComponent<ParticleSystem>().Stop(true, ParticleSystemStopBehavior.StopEmitting);
         UpdateBuildingProgress(1.0f);
+        m_LastSuccessfulCastle = m_CurrentBuildingCastle;
         m_CurrentBuildingCastle = null;
     }
 
     public void OnPuzzleLose()
     {
-        Destroy(m_CurrentBuildingCastle.parent.gameObject);
+        // Function is also used when releasing mouse button
+        if (m_CurrentBuildingCastle == null)
+            return;
+
+        // Stop last castle block particles system
+        m_CurrentBuildingCastle.blocks[m_CurrentBuildingCastle.blocks.Count - 1].GetComponent<ParticleSystem>().Stop(true, ParticleSystemStopBehavior.StopEmitting);
+        // Demolition particle system
+        m_CurrentBuildingCastle.parent.gameObject.GetComponent<ParticleSystem>().Play();
+        m_CurrentlyCollapsingCastles.Add(m_CurrentBuildingCastle.parent.gameObject);
         m_CurrentBuildingCastle = null;
+        m_LastSuccessfulCastle = null;
     }
 
-    public bool IsCurrentlyBuilding()
+    public bool IsPuzzleLost()
     {
-        return m_CurrentBuildingCastle != null;
+        return m_LastSuccessfulCastle == null;
     }
 
 }
