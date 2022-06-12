@@ -106,4 +106,10 @@ public class PuzzleGenerator : MonoBehaviour
         GameObject newNewPath = Instantiate(o.path, newPos, transform.rotation, transform);
     }
 
+    public Vector3 GetEndingPosition()
+    {
+        return m_LastPathGameObject.transform.position;
+    }
+
+
 }

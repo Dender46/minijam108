@@ -9,12 +9,17 @@ public class PuzzleGame : MonoBehaviour
     GameObject m_Player;
     Vector3 m_CameraPosDiff = Vector3.zero;
 
+    Vector3 m_EndingPosition;
+    float m_MaxDistance;
     Vector3 m_OrigPos;
 
     void Start()
     {
         // Add player controller prefab
         m_Player = Instantiate(m_PlayerPrefab, transform);
+        
+        m_EndingPosition = GetComponent<PuzzleGenerator>().GetEndingPosition();
+        m_MaxDistance = Vector3.Distance(m_Player.transform.position, m_EndingPosition);
         m_OrigPos = transform.position;
     }
 
@@ -31,6 +36,10 @@ public class PuzzleGame : MonoBehaviour
         // Move whole puzzle and player
         transform.position = m_OrigPos - (newPos - m_OrigPos);
         m_Player.transform.position = newPos;
+
+        
+        float dist = Vector3.Distance(m_Player.transform.position, m_EndingPosition);
+        CastlesManager.instance.UpdateBuildingProgress(Remap(dist, 0.0f, m_MaxDistance, 1.5f, 0.0f));
     }
 
     public void OnWin()
@@ -43,5 +52,10 @@ public class PuzzleGame : MonoBehaviour
     {
         CastlesManager.instance.OnPuzzleLose();
         Destroy(gameObject);
+    }
+
+    float Remap(float source, float sourceFrom, float sourceTo, float targetFrom, float targetTo)
+    {
+	    return targetFrom + (source-sourceFrom)*(targetTo-targetFrom)/(sourceTo-sourceFrom);
     }
 }

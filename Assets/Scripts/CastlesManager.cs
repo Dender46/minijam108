@@ -73,6 +73,11 @@ public class CastlesManager : MonoBehaviour
         spawnedBlock.transform.localRotation = Quaternion.identity;
         spawnedBlock.transform.Rotate(new Vector3(0.0f, 90.0f * (int)Random.Range(0, 3), 0.0f), Space.Self);
         spawnedBlock.transform.Translate(new Vector3(0.0f, castleObj.blocks.Count * 2.0f, 0.0f), Space.Self);
+        
+        foreach (var mat in spawnedBlock.GetComponent<MeshRenderer>().materials)
+        {
+            mat.SetFloat("_Fill", 0.0f);
+        }
 
         castleObj.blocks.Add(spawnedBlock);
         m_CurrentBuildingCastle = castleObj;
@@ -84,8 +89,17 @@ public class CastlesManager : MonoBehaviour
         return castleObj.blocks.Count == castleObj.maxHeight;
     }
 
+    public void UpdateBuildingProgress(float progress)
+    {
+        foreach (var mat in m_CurrentBuildingCastle.blocks[m_CurrentBuildingCastle.blocks.Count - 1].GetComponent<MeshRenderer>().materials)
+        {
+            mat.SetFloat("_Fill", progress);
+        }
+    }
+
     public void OnPuzzleWin()
     {
+        UpdateBuildingProgress(1.0f);
         m_CurrentBuildingCastle = null;
     }
 
