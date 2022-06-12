@@ -8,7 +8,18 @@ public class InputHandler : MonoBehaviour
     public GameObject m_Water;
     public float m_WaterOscilationScale;
 
+    public GameObject m_EscText;
+
     GameObject m_PuzzleObject;
+
+    void Start()
+    {
+        m_EscText.SetActive(false);
+        if (Application.platform == RuntimePlatform.WindowsPlayer)
+        {
+            m_EscText.SetActive(true);
+        }
+    }
 
     void Update()
     {
@@ -19,6 +30,12 @@ public class InputHandler : MonoBehaviour
         {
             OnMousePressed();
         }
+
+        if (Input.GetKeyDown(KeyCode.Escape) && Application.platform == RuntimePlatform.WindowsPlayer)
+        {
+            Application.Quit();
+        }
+
     }
 
     void OnMousePressed()
