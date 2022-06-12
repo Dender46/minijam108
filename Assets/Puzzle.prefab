@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 1606899479285029249}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 2.5, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalScale: {x: 3, y: 3, z: 3}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -77,9 +77,9 @@ MonoBehaviour:
   - beginPos: {x: -1, y: 0}
     nextPos: {x: 0, y: 0}
     path: {fileID: 4334257281527577289, guid: 1fa95c7d97345194da19bd4da218f1a1, type: 3}
-  m_MaxLength: 5
+  m_MaxLength: 6
   m_Length: 0
-  m_NewPosOffset: 3.981
+  m_NewPosOffset: 6
 --- !u!114 &8762822547495455380
 MonoBehaviour:
   m_ObjectHideFlags: 0

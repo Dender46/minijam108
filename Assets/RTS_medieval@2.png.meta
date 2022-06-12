@@ -335,7 +335,7 @@ TextureImporter:
         x: 1792
         y: 1216
         width: 128
-        height: 127
+        height: 128
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -353,9 +353,9 @@ TextureImporter:
       name: RTS_medieval@2_10
       rect:
         serializedVersion: 2
-        x: 1985
+        x: 1984
         y: 1216
-        width: 127
+        width: 128
         height: 128
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -731,9 +731,9 @@ TextureImporter:
       name: RTS_medieval@2_28
       rect:
         serializedVersion: 2
-        x: 1985
+        x: 1984
         y: 1024
-        width: 127
+        width: 128
         height: 128
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -1109,10 +1109,10 @@ TextureImporter:
       name: RTS_medieval@2_46
       rect:
         serializedVersion: 2
-        x: 1985
+        x: 1984
         y: 832
-        width: 127
-        height: 127
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
