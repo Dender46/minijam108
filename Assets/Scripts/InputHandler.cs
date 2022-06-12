@@ -39,8 +39,8 @@ public class InputHandler : MonoBehaviour
 
     void OnMouseReleased()
     {
-        //if (!CastlesManager.LastBuildIsSuccessful())
-        //    CastlesManager.DestroyCastle();
+        if (CastlesManager.instance.IsCurrentlyBuilding())
+            CastlesManager.instance.OnPuzzleLose();
         Destroy(m_PuzzleObject);
     }
 
@@ -50,11 +50,11 @@ public class InputHandler : MonoBehaviour
         {
             case "CastleBlock":
                 GameObject castleBlock = hit.collider.gameObject;
-                if (!CastlesManager.IsCastleMaxHeight(castleBlock))
-                    CastlesManager.AddNewBlock(castleBlock);
+                if (!CastlesManager.instance.IsCastleMaxHeight(castleBlock))
+                    CastlesManager.instance.AddNewBlock(castleBlock);
                 break;
             case "Ground":
-                CastlesManager.CreateNewCastle(hit.point);
+                CastlesManager.instance.CreateNewCastle(hit.point);
                 break;
         }
     }

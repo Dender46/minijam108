@@ -77,7 +77,7 @@ MonoBehaviour:
   - beginPos: {x: -1, y: 0}
     nextPos: {x: 0, y: 0}
     path: {fileID: 4334257281527577289, guid: 1fa95c7d97345194da19bd4da218f1a1, type: 3}
-  m_MaxLength: 6
+  m_MaxLength: 2
   m_Length: 0
   m_NewPosOffset: 6
 --- !u!114 &8762822547495455380

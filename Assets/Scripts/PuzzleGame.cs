@@ -32,4 +32,16 @@ public class PuzzleGame : MonoBehaviour
         transform.position = m_OrigPos - (newPos - m_OrigPos);
         m_Player.transform.position = newPos;
     }
+
+    public void OnWin()
+    {
+        CastlesManager.instance.OnPuzzleWin();
+        Destroy(gameObject);
+    }
+
+    public void OnFail()
+    {
+        CastlesManager.instance.OnPuzzleLose();
+        Destroy(gameObject);
+    }
 }

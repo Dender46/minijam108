@@ -4,20 +4,12 @@ using UnityEngine;
 
 public class CollisionHandler : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("OnTriggerEnter2D");
+        // CircleCollider2D is collider of winning triger
+        if (collision is CircleCollider2D)
+            transform.parent.GetComponent<PuzzleGame>().OnWin();
+        else
+            transform.parent.GetComponent<PuzzleGame>().OnFail();
     }
 }

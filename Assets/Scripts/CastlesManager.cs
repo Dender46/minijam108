@@ -14,6 +14,8 @@ public class CastlesManager : MonoBehaviour
     Dictionary<Transform, Castle> m_Castles = new Dictionary<Transform, Castle>();
     GameObject m_EmptyCastle;
 
+    Castle m_CurrentBuildingCastle;
+
     class Castle
     {
         public List<GameObject> blocks = new List<GameObject>();
@@ -21,7 +23,7 @@ public class CastlesManager : MonoBehaviour
         public int maxHeight;
     }
 
-    void Start()
+    void Awake()
     {
         if (instance == null)
         {
@@ -39,32 +41,33 @@ public class CastlesManager : MonoBehaviour
         }
     }
 
-    public static void CreateNewCastle(Vector3 pos)
+    public void CreateNewCastle(Vector3 pos)
     {
         Castle castleObj = new Castle();
 
-        GameObject newCastle = Instantiate(instance.m_EmptyCastle, pos, Quaternion.identity, instance.m_CastlesParent);
+        GameObject newCastle = Instantiate(m_EmptyCastle, pos, Quaternion.identity, m_CastlesParent);
         newCastle.transform.localRotation = Quaternion.identity;
         castleObj.parent = newCastle.transform;
 
-        var randomBlock = instance.m_Blocks[Random.Range(0, instance.m_Blocks.Count)];
+        var randomBlock = m_Blocks[Random.Range(0, m_Blocks.Count)];
         var spawnedBlock = Instantiate(randomBlock, castleObj.parent);
         castleObj.blocks.Add(spawnedBlock);
 
-        castleObj.maxHeight = Random.Range((int)instance.m_MinMaxHeight.x, (int)instance.m_MinMaxHeight.y + 1);
+        castleObj.maxHeight = Random.Range((int)m_MinMaxHeight.x, (int)m_MinMaxHeight.y + 1);
         
-        instance.m_Castles.Add(newCastle.transform, castleObj);
+        m_Castles.Add(newCastle.transform, castleObj);
+        m_CurrentBuildingCastle = castleObj;
     }
 
-    public static void AddNewBlock(GameObject castleBlock)
+    public void AddNewBlock(GameObject castleBlock)
     {
-        Castle castleObj = instance.m_Castles[castleBlock.transform.parent];
+        Castle castleObj = m_Castles[castleBlock.transform.parent];
 
         GameObject randomBlock;
         if (castleObj.blocks.Count < castleObj.maxHeight - 1)
-            randomBlock = instance.m_Blocks[Random.Range(0, instance.m_Blocks.Count)];
+            randomBlock = m_Blocks[Random.Range(0, m_Blocks.Count)];
         else
-            randomBlock = instance.m_Roofs[Random.Range(0, instance.m_Roofs.Count)];
+            randomBlock = m_Roofs[Random.Range(0, m_Roofs.Count)];
         
         var spawnedBlock = Instantiate(randomBlock, castleObj.parent);
         spawnedBlock.transform.localRotation = Quaternion.identity;
@@ -72,12 +75,29 @@ public class CastlesManager : MonoBehaviour
         spawnedBlock.transform.Translate(new Vector3(0.0f, castleObj.blocks.Count * 2.0f, 0.0f), Space.Self);
 
         castleObj.blocks.Add(spawnedBlock);
+        m_CurrentBuildingCastle = castleObj;
     }
 
-    public static bool IsCastleMaxHeight(GameObject castleBlock)
+    public bool IsCastleMaxHeight(GameObject castleBlock)
     {
-        Castle castleObj = instance.m_Castles[castleBlock.transform.parent];
+        Castle castleObj = m_Castles[castleBlock.transform.parent];
         return castleObj.blocks.Count == castleObj.maxHeight;
+    }
+
+    public void OnPuzzleWin()
+    {
+        m_CurrentBuildingCastle = null;
+    }
+
+    public void OnPuzzleLose()
+    {
+        Destroy(m_CurrentBuildingCastle.parent.gameObject);
+        m_CurrentBuildingCastle = null;
+    }
+
+    public bool IsCurrentlyBuilding()
+    {
+        return m_CurrentBuildingCastle != null;
     }
 
 }
