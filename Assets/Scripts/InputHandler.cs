@@ -8,8 +8,6 @@ public class InputHandler : MonoBehaviour
 
     GameObject m_PuzzleObject;
 
-    bool m_IsPressing;
-
     void Update()
     {
         if (Input.GetMouseButtonDown(0))
@@ -31,10 +29,21 @@ public class InputHandler : MonoBehaviour
         if (!Physics.Raycast(ray, out hit))
             return;
 
-        m_IsPressing = true;
-
-        CreateCastle(hit);
-        CreatePuzzle(ray.origin, hit);
+        switch(hit.collider.tag)
+        {
+            case "CastleBlock":
+                GameObject castleBlock = hit.collider.gameObject;
+                if (!CastlesManager.instance.IsCastleMaxHeight(castleBlock))
+                {
+                    CastlesManager.instance.AddNewBlock(castleBlock);
+                    CreatePuzzle(ray.origin, hit);
+                }
+                break;
+            case "Ground":
+                CastlesManager.instance.CreateNewCastle(hit.point);
+                CreatePuzzle(ray.origin, hit);
+                break;
+        }
     }
 
     void OnMouseReleased()
@@ -44,20 +53,6 @@ public class InputHandler : MonoBehaviour
         Destroy(m_PuzzleObject);
     }
 
-    void CreateCastle(RaycastHit hit)
-    {
-        switch(hit.collider.tag)
-        {
-            case "CastleBlock":
-                GameObject castleBlock = hit.collider.gameObject;
-                if (!CastlesManager.instance.IsCastleMaxHeight(castleBlock))
-                    CastlesManager.instance.AddNewBlock(castleBlock);
-                break;
-            case "Ground":
-                CastlesManager.instance.CreateNewCastle(hit.point);
-                break;
-        }
-    }
 
     void CreatePuzzle(Vector3 hitOrigin, RaycastHit hit)
     {
