@@ -40,6 +40,9 @@ public class PuzzleGame : MonoBehaviour
         
         float dist = Vector3.Distance(m_Player.transform.position, m_EndingPosition);
         CastlesManager.instance.UpdateBuildingProgress(Remap(dist, 0.0f, m_MaxDistance, 1.5f, 0.0f));
+
+        if (Input.GetMouseButtonUp(0))
+            OnFail();
     }
 
     public void OnWin()

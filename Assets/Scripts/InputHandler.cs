@@ -19,11 +19,6 @@ public class InputHandler : MonoBehaviour
         {
             OnMousePressed();
         }
-
-        if (Input.GetMouseButtonUp(0))
-        {
-            OnMouseReleased();
-        }
     }
 
     void OnMousePressed()
@@ -50,14 +45,6 @@ public class InputHandler : MonoBehaviour
                 break;
         }
     }
-
-    void OnMouseReleased()
-    {
-        if (CastlesManager.instance.IsPuzzleLost())
-            CastlesManager.instance.OnPuzzleLose();
-        Destroy(m_PuzzleObject);
-    }
-
 
     void CreatePuzzle(Vector3 hitOrigin, RaycastHit hit)
     {
