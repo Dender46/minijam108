@@ -9,31 +9,27 @@ public class PuzzleGame : MonoBehaviour
     GameObject m_Player;
     Vector3 m_CameraPosDiff = Vector3.zero;
 
-    Vector3 m_OldPos;
+    Vector3 m_OrigPos;
 
     void Start()
     {
         // Add player controller prefab
         m_Player = Instantiate(m_PlayerPrefab, transform);
+        m_OrigPos = transform.position;
     }
 
     void Update()
     {
         var mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition) + m_CameraPosDiff;
-        if (m_CameraPosDiff == Vector3.zero)
-        {
-            //m_CameraPosDiff = m_Player.transform.position - mousePos;
-        }
         
-        Vector3 oldPos = transform.position;
         Vector3 newPos = new Vector3(
             mousePos.x,
             mousePos.y,
             transform.position.z
         );
-        //m_Player.transform.position = newPos;
 
-        // Move whole puzzle
-        transform.position = newPos;
+        // Move whole puzzle and player
+        transform.position = m_OrigPos - (newPos - m_OrigPos);
+        m_Player.transform.position = newPos;
     }
 }
