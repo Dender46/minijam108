@@ -45,12 +45,14 @@ public class PuzzleGame : MonoBehaviour
     public void OnWin()
     {
         CastlesManager.instance.OnPuzzleWin();
+        AudioManager.instance.PlayWin();
         Destroy(gameObject);
     }
 
     public void OnFail()
     {
         CastlesManager.instance.OnPuzzleLose();
+        AudioManager.instance.PlayLose();
         Destroy(gameObject);
     }
 

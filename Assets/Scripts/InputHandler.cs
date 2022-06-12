@@ -5,11 +5,16 @@ using UnityEngine;
 public class InputHandler : MonoBehaviour
 {
     public GameObject m_PuzzlePrefab;
+    public GameObject m_Water;
+    public float m_WaterOscilationScale;
 
     GameObject m_PuzzleObject;
 
     void Update()
     {
+        // TODO: Move oscilating water
+        m_Water.transform.Rotate(Mathf.Sin(Time.time) / m_WaterOscilationScale, 0.0f, 0.0f);
+
         if (Input.GetMouseButtonDown(0))
         {
             OnMousePressed();

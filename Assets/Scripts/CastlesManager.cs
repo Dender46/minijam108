@@ -147,4 +147,8 @@ public class CastlesManager : MonoBehaviour
         return m_LastSuccessfulCastle == null;
     }
 
+    public bool IsBuilding()
+    {
+        return m_CurrentBuildingCastle != null;
+    }
 }
