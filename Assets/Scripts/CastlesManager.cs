@@ -71,11 +71,18 @@ public class CastlesManager : MonoBehaviour
         newCastle.transform.localRotation = Quaternion.identity;
         castleObj.parent = newCastle.transform;
 
-        var randomBlock = m_Blocks[Random.Range(0, m_Blocks.Count)];
+        GameObject randomBlock;
+        castleObj.maxHeight = Random.Range((int)m_MinMaxHeight.x, (int)m_MinMaxHeight.y + 1);
+        if (castleObj.maxHeight == 1)
+            randomBlock = m_Roofs[Random.Range(0, m_Roofs.Count)];
+        else
+            randomBlock = m_Blocks[Random.Range(0, m_Blocks.Count)];
+
+        
         var spawnedBlock = Instantiate(randomBlock, castleObj.parent);
         castleObj.blocks.Add(spawnedBlock);
 
-        castleObj.maxHeight = Random.Range((int)m_MinMaxHeight.x, (int)m_MinMaxHeight.y + 1);
+        
         
         m_Castles.Add(newCastle.transform, castleObj);
         m_CurrentBuildingCastle = castleObj;
