@@ -5,8 +5,11 @@ using UnityEngine;
 public class InputHandler : MonoBehaviour
 {
     public GameObject m_PuzzlePrefab;
+    
     public GameObject m_Water;
-    public float m_WaterOscilationScale;
+    public Vector3 m_WaterFrom = new Vector3(0f, 0f, 0f);
+    public Vector3 m_WaterTo   = new Vector3(0f, 0f, 0f);
+    public float m_WaterSpeed  = 1.0f; 
 
     public GameObject m_EscText;
 
@@ -21,11 +24,15 @@ public class InputHandler : MonoBehaviour
         }
     }
 
-    void Update()
+    void FixedUpdate()
     {
         // TODO: Move oscilating water
-        m_Water.transform.Rotate(Mathf.Sin(Time.time) / m_WaterOscilationScale, 0.0f, 0.0f);
+        float t = (Mathf.Sin (Time.time * m_WaterSpeed * Mathf.PI * 2.0f) + 1.0f) / 2.0f;
+        m_Water.transform.localEulerAngles = Vector3.Lerp (m_WaterFrom, m_WaterTo, t);
+    }
 
+    void Update()
+    {
         if (Input.GetMouseButtonDown(0))
         {
             OnMousePressed();
